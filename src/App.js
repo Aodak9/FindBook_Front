@@ -1,7 +1,7 @@
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './components/dumbComponents/NavBar/NavBar';
 function App() {
   return (
-    <div className='bg-greyBlack-100 h-screen w-screen'>
+    <div className='w-screen h-screen bg-greyBlack-100'>
       <NavBar/>
       <h1>Imagenes paginados</h1>
       <h1>Componentes con libros</h1>
