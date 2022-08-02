@@ -1,18 +1,22 @@
 import React from 'react'
 
-export default function Filter({text}) {
+export default function Filter({text, filtros}) {
+  let handleOnClick = ()=>{
+    console.log('hola')
+  }
   return (
-    <div className='mx-auto'>
-        <details class="open:bg-cream-300 open:ring-1 open:ring-black/5 dark:open:ring-white/10 open:shadow-lg rounded-lg" open>
-    <summary class="text-sm leading-6 text-slate-900 dark:text-greyBlack-400 font-semibold select-none">
-      {text}
-    </summary>
-    <div class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
-      <p>Drama</p>
-      <p>Terror</p>
-      <p>Drama</p>
-    </div>
-  </details>
+    <div className='w-28'>
+      <details class="open:bg-cream-300 open:shadow-lg rounded-lg p-2">
+          <summary class="text-sm text-greyBlack-400 font-semibold select-none p-1">
+            {text}
+          </summary>
+        <div class="p-2 flex flex-col text-sm leading-6 text-greyBlack-400 border-t-2 border-greyBlack-100">
+          {
+            filtros && filtros.map((e, i)=> <input type='button' key={i} onClick={handleOnClick} value={e}/>)
+          }
+        </div>
+      </details>
     </div>
   )
 }
+
