@@ -7,9 +7,10 @@ export const themesC = {
     grey: '#747474',
     grey_Ligth: '#9c9c9c',
     grey_Dark: '#444444'
+    
 }
 
-const size = {
+export const size = {
     mobileS: '320px',
     mobileM: '375px',
     mobileL: '425px',
@@ -19,7 +20,7 @@ const size = {
     desktop: '2560px'
 }
 
-const device = {
+export const device = {
     mobileS: `(min-width: ${size.mobileS})`,
     mobileM: `(min-width: ${size.mobileM})`,
     mobileL: `(min-width: ${size.mobileL})`,
