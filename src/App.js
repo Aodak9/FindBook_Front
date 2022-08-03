@@ -1,17 +1,25 @@
 import NavBar from './components/dumbComponents/NavBar/NavBar';
-import Publicity from './components/dumbComponents/Publicity/Publicity';
-import Card from './components/dumbComponents/Card/Card';
 import Footer from './components/dumbComponents/Footer/Footer';
+import {Routes, Route} from 'react-router-dom'
+import Detail from './components/dumbComponents/Detail/Detail';
+import Shop from './components/dumbComponents/Shop/Shop';
+import Loggin from './components/smartComponents/Loggin/Loggin';
+import Contact from './components/smartComponents/Contact/Contact'
+import SearchByName from './components/dumbComponents/Detail/SearchByName/SearchByName';
+import Home from './components/dumbComponents/Home/Home';
+
 function App() {
   return (
     <div className='w-screen h-screen bg-greyBlack-100'>
       <NavBar/>
-      <h1>Imagenes paginados</h1>
-      <Publicity/>
-      <h1>Componentes con libros</h1>
-      <Card/>
-      <h1>Paginados con imagenes con categorias</h1>
-      <h1>Libro destacado de la semana</h1>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/detail/:id' element={<Detail/>}/>
+        <Route path='/shop' element={<Shop/>}/>
+        <Route path='/loggin' element={<Loggin/>}/>
+        <Route path='/contacto' element={<Contact/>}/>
+        <Route path='/busqueda/:name' element={<SearchByName/>}/>
+      </Routes>
       <Footer/>
     </div>
   );

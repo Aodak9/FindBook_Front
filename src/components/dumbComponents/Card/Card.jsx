@@ -1,12 +1,11 @@
 import React from "react";
-import { ReactDOM } from "react";
 import data from "../../../mock/mockdata.json"
 
 
 
 export default function Card() {
     return(
-    <div className="w-screen h-96 flex justify-evenly">
+    <div className="flex justify-evenly">
         {data.length > 0 && data.map((e)=>{
             return(
             <div key={e.id} className="w-44 h-72" >
@@ -20,7 +19,7 @@ export default function Card() {
                                     {e.author}
                                 </div>
                             </div>
-                     </div>
+                    </div>
             </div>
             )
         })}
