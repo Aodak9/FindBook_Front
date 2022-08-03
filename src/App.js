@@ -1,5 +1,6 @@
 import NavBar from './components/dumbComponents/NavBar/NavBar';
 import Card from './components/dumbComponents/Card/Card';
+import Footer from './components/dumbComponents/Footer/Footer';
 function App() {
   return (
     <div className='w-screen h-screen bg-greyBlack-100'>
@@ -9,7 +10,7 @@ function App() {
       <Card/>
       <h1>Paginados con imagenes con categorias</h1>
       <h1>Libro destacado de la semana</h1>
-      <h1>Footer</h1>
+      <Footer/>
     </div>
   );
 }
