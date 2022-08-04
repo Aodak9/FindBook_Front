@@ -5,7 +5,7 @@ import Detail from './components/dumbComponents/Detail/Detail';
 import Shop from './components/dumbComponents/Shop/Shop';
 import Loggin from './components/smartComponents/Loggin/Loggin';
 import Contact from './components/smartComponents/Contact/Contact'
-import SearchByName from './components/dumbComponents/Detail/SearchByName/SearchByName';
+import SearchByName from './components/dumbComponents/SearchByName/SearchByName';
 import Home from './components/dumbComponents/Home/Home';
 
 function App() {
