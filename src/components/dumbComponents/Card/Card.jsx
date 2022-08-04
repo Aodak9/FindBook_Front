@@ -2,7 +2,7 @@ import React from "react";
 import data from "../../../mock/mockdata.json"
 import {Link} from "react-router-dom"
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper';
+import { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -12,8 +12,15 @@ import 'swiper/css/autoplay';
 
 export default function Card() {
     return(
+        <Swiper
+        modules = { [ Navigation, Pagination ] }
+            slidesPerView = { 4 }
+            navigation
+            pagination = { { clickable: true } }
+        >
         <div className="flex justify-evenly">
             {data.length > 0 && data.map((e)=>(
+                <SwiperSlide className = "flex justify-center">
                 <div key={e.id} className="max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-400 dark:border-gray-700 w-60">
                     <Link to={`/detail/${e.id}`}>
                          <img className="p-8 rounded-t-lg w-60 h-72" src={e.image} alt="not found"/>
@@ -41,8 +48,9 @@ export default function Card() {
                         </div>
                     </div>
                 </div>
-            ))}
-        </div> 
+                </SwiperSlide>))}
+        </div>
+        </Swiper> 
     )
 }
 
