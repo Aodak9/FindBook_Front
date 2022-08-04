@@ -5,6 +5,7 @@ export const themesC = {
     white: '#f0ede5',
     cream: '#c9af7f',
     grey: '#747474',
+    grey_Ligth_100: '#d3d3d3',
     grey_Ligth: '#9c9c9c',
     grey_Dark: '#444444'
     
