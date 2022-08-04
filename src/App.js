@@ -7,6 +7,7 @@ import Loggin from './components/smartComponents/Loggin/Loggin';
 import Contact from './components/smartComponents/Contact/Contact'
 import SearchByName from './components/dumbComponents/SearchByName/SearchByName';
 import Home from './components/dumbComponents/Home/Home';
+import CreatePost from './components/smartComponents/CreatePost/CreatePost';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/detail/:id' element={<Detail/>}/>
         <Route path='/shop' element={<Shop/>}/>
+        <Route path='/postbook' element={<CreatePost/>}/>
         <Route path='/loggin' element={<Loggin/>}/>
         <Route path='/contacto' element={<Contact/>}/>
         <Route path='/busqueda/:name' element={<SearchByName/>}/>
