@@ -1,9 +1,10 @@
 import React from 'react'
 import {ButtonDetail, H1Detail, DivDetail, TextDetail, DivTableDetail, DivTableColDetail} from './stayleComponentDetail'
 import data from '../../../mock/mockdata.json'
-
+import { useParams } from 'react-router-dom';
 export default function Detail() {
-    let detail = data[0];
+    let {id} = useParams()
+    let detail = data.find(e => e.id === parseInt(id)); 
     return (
         <>
         {  
