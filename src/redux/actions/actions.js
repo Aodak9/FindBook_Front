@@ -1,52 +1,64 @@
-import { GET_ALL_BOOKS, GET_BOOK_BY_ID, GET_BOOKS_BY_NAME, GET_GENRES } from "./variables";
+import { GET_ALL_BOOKS, GET_BOOK_BY_ID, GET_BOOKS_BY_NAME, GET_BOOK_BY_GENRE, GET_GENRE} from "./variables";
 import axios from "axios";
 
 export let getAllBooks = ()=> async(dispatch)=>{
     try {
-        let allBooks = (await axios.get('http://localhost:3001/books')).data;
+        let allBooks = (await axios.get('https://findbook-api.herokuapp.com/books')).data;
+        console.log(allBooks)
         dispatch({
             type: GET_ALL_BOOKS,
             payload: allBooks
         })
     } catch (error) {
-        
+        alert(error)
     }
 }
 
-export let getBookByID = (name)=> async(dispatch)=>{
+export let getBookByID = (id)=> async(dispatch)=>{
     try {
-        let bookByID = (await axios.get(`https://localhost/books?name=[${name}]`)).data
+        let bookByID = (await axios.get(`https://findbook-api.herokuapp.com/books/${id}`)).data;
         dispatch({
             type: GET_BOOK_BY_ID,
             payload: bookByID
         })
     } catch (error) {
-        
+        alert(error)
     }
 }
 
-export let getBookByName = ()=> async(dispatch)=>{
+export let getBookByName = (name)=> async(dispatch)=>{
     try {
-        return {
-            type: GET_BOOKS_BY_NAME
-        }
+        let bookByName = (await axios.get(`https://findbook-api.herokuapp.com/books?name=${name}`)).data;
+        dispatch({
+            type: GET_BOOKS_BY_NAME,
+            payload: bookByName
+        })
     } catch (error) {
-
+        alert(error)
     }
 }
 
-export let getGenres = ()=> async(dispatch)=>{
+export let getBooksGenres = (genre)=> async(dispatch)=>{
     try {
-        return {
-            type: GET_GENRES
-        }
+        let getGenresDB = (await axios.get(`https://findbook-api.herokuapp.com/genres?genre=${genre}`)).data;
+        dispatch({
+            type: GET_BOOK_BY_GENRE,
+            payload: getGenresDB
+        }) 
     } catch (error) {
-
+        alert(error)
     }
 }
 
-/* /books
-acepta query "?name=[nombreDeLibro]"
-/books/:id
-/genres?genre=[genreName]
- */
+export let getGenres = (genre)=> async(dispatch)=>{
+    try {
+        let getGenresDB = (await axios.get('https://findbook-api.herokuapp.com/genres')).data;
+        dispatch({
+            type: GET_GENRE,
+            payload: getGenresDB
+        })
+    } catch (error) {
+        alert(error)
+    }
+}
+

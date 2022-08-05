@@ -1,11 +1,12 @@
 import React from 'react'
 
 export default function Filter({text, filtros}) {
+  
   let handleOnClick = (e)=>{
     console.log(e.target.id)
   }
   return (
-    <div className='w-72 z-10'>
+    <div className='w-80 z-10'>
       <details class="open:bg-cream-300 open:shadow-lg rounded-lg p-2">
           <summary class="text-sm text-greyBlack-400 font-semibold select-none p-1">
             {text}

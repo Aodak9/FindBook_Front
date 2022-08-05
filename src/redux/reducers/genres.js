@@ -1,17 +1,17 @@
-import {GET_GENRES} from '../actions/variables'
+import {GET_GENRE} from '../actions/variables'
 
 let initialState = {
-    genres: []
+    genres: [],
 }
 
 export default function genre(state = initialState, actions){
     switch (actions.type) {
-        case GET_GENRES:
-        return {
-            ...state,
-            genres: actions.payload
-        }
+        case GET_GENRE:
+            return {
+                ...state,
+                genres: actions.payload
+            }
         default:
-            return {...state}
+            return {...state} 
     }
 }

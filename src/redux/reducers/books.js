@@ -1,8 +1,9 @@
-import {GET_ALL_BOOKS, GET_BOOK_BY_ID, GET_BOOKS_BY_NAME} from '../actions/variables'
+import {GET_ALL_BOOKS, GET_BOOK_BY_ID, GET_BOOKS_BY_NAME, GET_BOOK_BY_GENRE} from '../actions/variables'
 
 let initialState = {
     allBooks: [],
     allBooksByName: [],
+    allBooksByGenre: [],
     bookById: {},
 }
 
@@ -11,7 +12,7 @@ export default function root(state = initialState, actions){
         case GET_ALL_BOOKS:
             return {
                 ...state,
-                allBooks: [...state.allBooks, actions.payload]
+                allBooks: actions.payload
             }
         case GET_BOOK_BY_ID:
             return {
@@ -22,6 +23,11 @@ export default function root(state = initialState, actions){
             return {
                 ...state,
                 allBooksByName: actions.payload
+            }
+        case GET_BOOK_BY_GENRE:
+            return {
+                ...state,
+                allBooksByGenre: actions.payload
             }
         default:
             return {...state}

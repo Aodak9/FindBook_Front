@@ -8,8 +8,18 @@ import Contact from './components/smartComponents/Contact/Contact'
 import SearchByName from './components/dumbComponents/SearchByName/SearchByName';
 import Home from './components/dumbComponents/Home/Home';
 import CreatePost from './components/smartComponents/CreatePost/CreatePost';
-
+import {useEffect} from 'react'
+import { useDispatch } from 'react-redux';
+import {getAllBooks, getGenres} from  './redux/actions/actions'
 function App() {
+
+  let dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllBooks())
+    dispatch(getGenres())
+  }, [])
+
   return (
     <div className='w-screen h-screen bg-greyBlack-100'>
       <NavBar/>
