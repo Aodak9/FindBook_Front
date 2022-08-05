@@ -4,7 +4,6 @@ import axios from "axios";
 export let getAllBooks = ()=> async(dispatch)=>{
     try {
         let allBooks = (await axios.get('https://findbook-api.herokuapp.com/books')).data;
-        console.log(allBooks)
         dispatch({
             type: GET_ALL_BOOKS,
             payload: allBooks

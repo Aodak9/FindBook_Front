@@ -1,9 +1,13 @@
 import React from 'react'
-
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import {getBooksGenres} from '../../../redux/actions/actions'
 export default function Filter({text, filtros}) {
-  
+  let navigate = useNavigate()
+  let dispatch = useDispatch()
   let handleOnClick = (e)=>{
-    console.log(e.target.id)
+    dispatch(getBooksGenres(e.target.id))
+    navigate(`/categoria/${e.target.id}`)
   }
   return (
     <div className='w-80 z-10'>
@@ -13,7 +17,7 @@ export default function Filter({text, filtros}) {
           </summary>
         <div class="p-2 grid grid-cols-2 gap-1 text-sm leading-6 text-greyBlack-400 border-t-2 border-greyBlack-100">
           {
-            filtros && filtros.map((e, i)=> <button key={i} id={e} onClick={(e)=>handleOnClick(e)}>{e}</button>)
+            filtros && filtros.map((e)=> <button key={e.id} id={e.genre} onClick={(e)=>handleOnClick(e)}>{e.genre}</button>)
           }
         </div>
       </details>

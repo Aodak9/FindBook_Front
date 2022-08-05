@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import {getBookByName} from '../../../redux/actions/actions'
 
 export default function SearchNavBar() {
   const [name, setName] = useState('')
-
+  const navigate = useNavigate()
   const dispatch = useDispatch()
+
   function handleOnClick(){
-    dispatch()
+    dispatch(getBookByName(name))
+    navigate(`/busqueda/${name}`)
     setName('')
   }
 
