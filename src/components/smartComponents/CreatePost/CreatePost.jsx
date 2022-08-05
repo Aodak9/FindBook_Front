@@ -125,7 +125,7 @@ export default function CreatePost() {
         const possibleRatings = [1, 2, 3, 4, 5];
         return (
             <div>
-                <select className = "text-slate-600 w-56 text-center" onChange = {(e) => handleSelectRating(e)}> {/*RatingSelector*/}
+                <select className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectRating(e)}> {/*RatingSelector*/}
                     <option /*disabled={true}*/ value="disabled">--Seleccionar--</option>
                     {
                         possibleRatings.map(r  => ( <option value = {r}>{r}</option> ))
@@ -149,7 +149,7 @@ export default function CreatePost() {
         const possibleCategories = ['todos', '12+', '16+', '18+', 'sin clasificación'];
         return (
             <div>
-                <select className = "text-slate-600 w-56 text-center" onChange = {(e) => handleSelectCategory(e)}> {/*CategorySelector*/}
+                <select className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectCategory(e)}> {/*CategorySelector*/}
                     <option /*disabled={true}*/ value="disabled">--Seleccionar--</option>
                     {
                         possibleCategories.map(cat  => ( <option value = {cat}>{cat}</option> ))
@@ -173,7 +173,7 @@ export default function CreatePost() {
         const possibleLanguages = ['español', 'inglés', 'otro'];
         return (
             <div>
-                <select className = "text-slate-600 w-56 text-center" onChange = {(e) => handleSelectLanguage(e)}> {/*LanguageSelector*/}
+                <select className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectLanguage(e)}> {/*LanguageSelector*/}
                     <option /*disabled={true}*/ value="disabled">--Seleccionar--</option>
                     {
                         possibleLanguages.map(lang  => ( <option value = {lang}>{lang}</option> ))
@@ -202,7 +202,7 @@ export default function CreatePost() {
         ];
         return (
             <div>
-                <select className = "text-slate-600 w-56 text-center" onChange = {(e) => handleSelectGenre(e)}> {/*GenreSelector*/}
+                <select className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectGenre(e)}> {/*GenreSelector*/}
                     <option /*disabled={true}*/ value="disabled">--Seleccionar--</option>
                     {
                         possibleGenres.map(gen  => ( <option value = {gen}>{gen}</option> ))
@@ -225,57 +225,57 @@ export default function CreatePost() {
     // Renderizar formulario
     return (
         <div className = "flex justify-center items-center text-center h-screen flex-col"> {/*Container*/}
-            <div className = "bg-slate-900 px-20 w-2/3"> {/*Background*/}
-                <h1 className = "text-slate-50 pt-5 text-lg">PUBLICA TU LIBRO PARA VENTA</h1>
+            <div className = "bg-cream-100 px-20 w-2/3 rounded"> {/*Background bg-slate-900*/}
+                <h1 className = "text-zinc-600 pt-5 text-lg">PUBLICA TU LIBRO PARA VENTA</h1>
                 <br></br>
                 <form onSubmit={e => handleFormSubmit (e)}> {/*FormContainer*/}
-                    <div className = "flex justify-between text-slate-50"> {/*FormItem*/}
+                    <div className = "flex justify-between text-zinc-600 mb-1"> {/*FormItem*/}
                         <label>Título:</label>
-                        <input type = 'text' value = {form.name} name = 'name' onChange={e => handleFormChange (e)} className = "w-56"/>
+                        <input type = 'text' value = {form.name} name = 'name' onChange={e => handleFormChange (e)} className = "w-56 rounded-lg"/>
                     </div>
-                    <div className = "flex justify-between text-slate-50"> {/*FormItem*/}
+                    <div className = "flex justify-between text-zinc-600 mb-1"> {/*FormItem*/}
                         <label>Autor:</label>
-                        <input type = 'text' value = {form.author} name = 'author' onChange={e => handleFormChange (e)} className = "w-56"/>
+                        <input type = 'text' value = {form.author} name = 'author' onChange={e => handleFormChange (e)} className = "w-56 rounded-lg"/>
                     </div>
-                    <div className = "flex justify-between text-slate-50"> {/*FormItem*/}
+                    <div className = "flex justify-between text-zinc-600 mb-1"> {/*FormItem*/}
                         <label>Género(s):</label>
                         {GenreSelector()}
                     </div>
-                    <div className = "flex justify-between text-slate-50"> {/*FormItem*/}
+                    <div className = "flex justify-between text-zinc-600 mb-1"> {/*FormItem text-slate-50*/}
                         <label>Categoría:</label>
                         {CategorySelector()}
                     </div>
-                    <div className = "flex justify-between text-slate-50"> {/*FormItem*/}
+                    <div className = "flex justify-between text-zinc-600 mb-1"> {/*FormItem*/}
                         <label>Número de páginas:</label>
-                        <input type = 'text' value = {form.pages} name = 'pages' onChange={e => handleFormChange (e)} className = "w-56"/>
+                        <input type = 'text' value = {form.pages} name = 'pages' onChange={e => handleFormChange (e)} className = "w-56 rounded-lg"/>
                     </div>
-                    <div className = "flex justify-between text-slate-50"> {/*FormItem*/}
+                    <div className = "flex justify-between text-zinc-600 mb-1"> {/*FormItem*/}
                         <label>Editorial:</label>
-                        <input type = 'text' value = {form.publisher} name = 'publisher' onChange={e => handleFormChange (e)} className = "w-56"/> 
+                        <input type = 'text' value = {form.publisher} name = 'publisher' onChange={e => handleFormChange (e)} className = "w-56 rounded-lg"/> 
                     </div>
-                    <div className = "flex justify-between text-slate-50"> {/*FormItem*/}
+                    <div className = "flex justify-between text-zinc-600 mb-1"> {/*FormItem*/}
                         <label>Imagen o Portada:</label>
-                        <input type = 'text' value = {form.image} name = 'image' onChange={e => handleFormChange (e)} className = "w-56"/>
+                        <input type = 'text' value = {form.image} name = 'image' onChange={e => handleFormChange (e)} className = "w-56 rounded-lg"/>
                     </div>
-                    <div className = "flex justify-between text-slate-50"> {/*FormItem*/}
+                    <div className = "flex justify-between text-zinc-600 mb-1"> {/*FormItem*/}
                         <label>Puntaje:</label>
                         {RatingSelector()}
                     </div>
-                    <div className = "flex justify-between text-slate-50"> {/*FormItem*/}
+                    <div className = "flex justify-between text-zinc-600 mb-1"> {/*FormItem*/}
                         <label>Precio:</label>
-                        <input type = 'text' value = {form.price} name = 'price' onChange={e => handleFormChange (e)} className = "w-56"/>
+                        <input type = 'text' value = {form.price} name = 'price' onChange={e => handleFormChange (e)} className = "w-56 rounded-lg"/>
                     </div>
-                    <div className = "flex justify-between text-slate-50"> {/*FormItem*/}
+                    <div className = "flex justify-between text-zinc-600 mb-1"> {/*FormItem*/}
                         <label>Fecha de publicación:</label>
-                        <input type = 'date' value = {form.released} name = 'released' onChange={e => handleFormChange (e)} className = "text-slate-600 w-56 text-center"/>
+                        <input type = 'date' value = {form.released} name = 'released' onChange={e => handleFormChange (e)} className = "text-slate-600 w-56 rounded-lg text-center"/>
                     </div>
-                    <div className = "flex justify-between text-slate-50"> {/*FormItem*/}
+                    <div className = "flex justify-between text-zinc-600 mb-1"> {/*FormItem*/}
                         <label>Idioma:</label>
                         {LanguageSelector()}
                     </div>
-                    <div className = "flex flex-col text-slate-50"> {/*FormItem*/}
+                    <div className = "flex flex-col text-zinc-600 mb-1"> {/*FormItem*/}
                         <label className = "flex items-start">Descripción:</label>
-                        <textarea type = 'text' value = {form.description} name = 'description' onChange={e => handleFormChange (e)} className = "w-full"/>
+                        <textarea type = 'text' value = {form.description} name = 'description' onChange={e => handleFormChange (e)} className = "w-full rounded-lg"/>
                     </div>
                     <div> {/*ErrorDiv*/}
                         {
@@ -292,17 +292,16 @@ export default function CreatePost() {
                         {
                             Object.entries(forbidden).length === 0 ?
                                 <div> {/*PostButtonDiv*/}
-                                    <button type = 'submit' className = "no-underline py-1 px-4 text-neutral-900 rounded-2xl font-medium bg-slate-50 hover:text-white hover: border-solid hover: border-slate-50 hover:bg-stone-400">Publicar</button>
+                                    <button type = 'submit' className = "no-underline w-60 py-1 px-4 text-neutral-900 rounded-2xl font-medium bg-stone-400 hover:text-white hover:border-solid hover:border-slate-50 hover:bg-stone-400">Publicar</button>
                                 </div>
                                 :
                                 <div> {/*PostButtonDisabledDiv*/}
-                                    <button type = 'submit' 
-                                    className = "no-underline py-1 px-4 text-gray-800 rounded-2xl font-medium bg-zinc-600 pointer-events-none">Publicar</button>
+                                    <button type = 'submit' className = "no-underline w-60 py-1 px-4 text-gray-800 rounded-2xl font-medium bg-zinc-600 pointer-events-none">Publicar</button>
                                 </div>
                         }
                         <div> {/*GoBackDiv*/}
                             <Link to = '/'>
-                                <button className = "no-underline py-1 px-4 text-neutral-900 rounded-2xl font-medium bg-slate-50 hover:text-white hover: border-solid hover: border-slate-50 hover:bg-stone-400">Cancelar {'&'} Volver</button>
+                                <button className = "no-underline w-60 py-1 px-4 text-neutral-900 rounded-2xl font-medium bg-stone-400 hover:text-white hover:border-solid hover:border-slate-50 hover:bg-stone-400">Cancelar {'&'} Volver</button>
                             </Link>
                         </div>
                     </div>                    
