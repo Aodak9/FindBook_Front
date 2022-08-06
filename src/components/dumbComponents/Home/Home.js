@@ -1,12 +1,18 @@
 import React from 'react'
 import Publicity from '../../dumbComponents/Publicity/Publicity';
-import Card from '../Card/Card';
+import SwiperCard from '../Card/SwiperCard';
+import { useSelector } from "react-redux";
+
 
 export default function Home() {
+    let state = useSelector(s => s.root.allBooks)
+    let data = state.slice(0, 10)
     return (
-        <div className='w-full h-screen bg-greyBlack-100'>
+        <div className='w-screen h-screen bg-greyBlack-100'>
             <Publicity/>
-            <Card/>
+            <div>
+                <SwiperCard data={data}/>
+            </div>
         </div>
     )
 }

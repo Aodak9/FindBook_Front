@@ -5,20 +5,21 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import data from "../../../mock/mockdata.json";
+import publi1 from '../../../assets/After.png'
+import publi2 from '../../../assets/Harry.png'
 
-//let pictures = [10, 20, 30, 40, 50, 60];
+let pictures = [publi1, publi2];
 
 function slidecreator () {
     return (
-        data.map(e => {
+        pictures.map(e => {
             return (
                 <SwiperSlide className = "flex justify-center">
                     <img 
-                        className = "h-80"
+                        className = "h-96 w-screen mb-4"
                         alt = "Not Found"
                         /*src = {`https://picsum.photos/id/${pic}/800/600`}*/
-                        src = {e.image}
+                        src = {e}
                     ></img>
                 </SwiperSlide>
             )   
@@ -31,7 +32,7 @@ export default function Publicity() {
         <Swiper
             modules = { [ Navigation, Pagination, Autoplay ] }
             slidesPerView = { 1 }
-            navigation
+            //navigation
             // autoplay={{ delay: 10000 }}
             autoplay = { true }
             pagination = { { clickable: true } }
