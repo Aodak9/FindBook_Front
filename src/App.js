@@ -8,8 +8,19 @@ import Contact from './components/smartComponents/Contact/Contact'
 import SearchByName from './components/dumbComponents/SearchByName/SearchByName';
 import Home from './components/dumbComponents/Home/Home';
 import CreatePost from './components/smartComponents/CreatePost/CreatePost';
-
+import {useEffect} from 'react'
+import { useDispatch } from 'react-redux';
+import {getAllBooks, getGenres} from  './redux/actions/actions'
+import SearchByCategory from './components/dumbComponents/SearchByCategory/SearchByCategory';
 function App() {
+
+  let dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllBooks())
+    dispatch(getGenres())
+  }, [dispatch])
+
   return (
     <div className='w-screen h-screen bg-greyBlack-100'>
       <NavBar/>
@@ -21,8 +32,9 @@ function App() {
         <Route path='/loggin' element={<Loggin/>}/>
         <Route path='/contacto' element={<Contact/>}/>
         <Route path='/busqueda/:name' element={<SearchByName/>}/>
+        <Route path='/categoria/:genre' element={<SearchByCategory/>}/>
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

@@ -35,7 +35,7 @@ export default function NavBar() {
         </div>
       </div>
     </div>
-      <div className='h-14 bg-cream-200'>
+      <div className='h-14 bg-cream-200 relative'>
         <Filters/>
       </div>
     </>
