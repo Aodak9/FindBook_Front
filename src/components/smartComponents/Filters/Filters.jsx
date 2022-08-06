@@ -5,9 +5,8 @@ import Filter from './Filter'
 export default function Filters() {
   let state = useSelector(s => s.genre.genres)
   let year = useSelector(s => s.root.year)
-  console.log(year)
   return (
-    <div className='grid h-full grid-cols-2 pt-1 mx-40 justify-items-center z-50'>
+    <div className='z-50 grid h-full grid-cols-2 pt-1 mx-40 justify-items-center'>
       <Filter text={'Genero'} filtros={state} />
       <Filter text={'Año'} filtros={year} />
     </div>

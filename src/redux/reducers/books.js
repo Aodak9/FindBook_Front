@@ -1,9 +1,10 @@
-import {GET_ALL_BOOKS, GET_BOOK_BY_ID, GET_BOOKS_BY_NAME, GET_BOOK_BY_GENRE, GET_YEARS} from '../actions/variables'
+import {GET_ALL_BOOKS, GET_BOOK_BY_ID, GET_BOOKS_BY_NAME, GET_BOOK_BY_GENRE, GET_YEARS, GET_BOOKS_BY_YEARS} from '../actions/variables'
 
 let initialState = {
     allBooks: [],
     allBooksByName: [],
     allBooksByGenre: [],
+    allBooksByRealiced: [],
     bookById: {},
     year: [],
     name: ''
@@ -42,6 +43,12 @@ export default function root(state = initialState, actions){
             return {
                 ...state,
                 year: years
+            }
+        case GET_BOOKS_BY_YEARS:
+            let booksByName = state.allBooks.filter(e => e.released === actions.payload)
+            return {
+                ...state,
+                allBooksByRealiced: booksByName
             }
         default:
             return {...state}

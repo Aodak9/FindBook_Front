@@ -1,4 +1,4 @@
-import { GET_ALL_BOOKS, GET_BOOK_BY_ID, GET_BOOKS_BY_NAME, GET_BOOK_BY_GENRE, GET_GENRE, GET_YEARS} from "./variables";
+import { GET_ALL_BOOKS, GET_BOOK_BY_ID, GET_BOOKS_BY_NAME, GET_BOOK_BY_GENRE, GET_GENRE, GET_YEARS, GET_BOOKS_BY_YEARS} from "./variables";
 import axios from "axios";
 
 export let getAllBooks = ()=> async(dispatch)=>{
@@ -71,4 +71,11 @@ export let getYears = () => async(dispatch)=>{
     } catch (error) {
         alert(error)
     }
+}
+
+export let getBooksByYears = (data) =>{
+        return{
+            type: GET_BOOKS_BY_YEARS,
+            payload: data
+        }
 }
