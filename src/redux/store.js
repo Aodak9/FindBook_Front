@@ -1,11 +1,8 @@
-import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
-import root from './reducers/books'
+import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
-import genre from  './reducers/genres'
+import reducers from './reducers/index'
 
-let reducers = combineReducers({root, genre})
-const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
     reducers,
