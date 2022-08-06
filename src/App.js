@@ -22,7 +22,7 @@ function App() {
   }, [dispatch])
 
   return (
-    <div className='w-screen h-screen bg-greyBlack-100'>
+    <div className='w-full h-full bg-greyBlack-100'>
       <NavBar/>
       <Routes>
         <Route path='/' element={<Home/>}/>

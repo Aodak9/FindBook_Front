@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 export default function NavBar() {
   return (
     <>
-    <div className='w-screen h-20 bg-cream-100'>
+    <div className='w-full h-20 bg-cream-100'>
       <div className={'grid grid-cols-5 h-full items-center justify-items-center'}>
         <Link to={'/'}>
           <img src={Logo} alt='Not found' className={'h-16 col-start-1 col-end-2'}/>
@@ -35,7 +35,7 @@ export default function NavBar() {
         </div>
       </div>
     </div>
-      <div className='h-14 bg-cream-200 relative'>
+      <div className='relative h-14 bg-cream-200'>
         <Filters/>
       </div>
     </>

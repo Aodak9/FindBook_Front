@@ -6,7 +6,7 @@ export let getAllBooks = ()=> async(dispatch)=>{
         let allBooks = (await axios.get('https://findbook-api.herokuapp.com/books')).data;
         dispatch({
             type: GET_ALL_BOOKS,
-            payload: allBooks
+            payload: allBooks.content
         })
     } catch (error) {
         alert(error)
@@ -30,7 +30,7 @@ export let getBookByName = (name)=> async(dispatch)=>{
         let bookByName = (await axios.get(`https://findbook-api.herokuapp.com/books?name=${name}`)).data;
         dispatch({
             type: GET_BOOKS_BY_NAME,
-            payload: bookByName
+            payload: bookByName.content
         })
     } catch (error) {
         alert(error)
@@ -42,7 +42,7 @@ export let getBooksGenres = (genre)=> async(dispatch)=>{
         let getGenresDB = (await axios.get(`https://findbook-api.herokuapp.com/genres?genre=${genre}`)).data;
         dispatch({
             type: GET_BOOK_BY_GENRE,
-            payload: getGenresDB
+            payload: getGenresDB.content
         }) 
     } catch (error) {
         alert(error)
