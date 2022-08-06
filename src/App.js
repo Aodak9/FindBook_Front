@@ -11,6 +11,7 @@ import {useEffect} from 'react'
 import { useDispatch } from 'react-redux';
 import {getAllBooks, getGenres, getYears} from  './redux/actions/actions'
 import SearchByCategory from './components/dumbComponents/SearchByCategory/SearchByCategory';
+import SearchByReleased from './components/dumbComponents/SearchByReleased/SearchByReleased';
 function App() {
 
   let dispatch = useDispatch()
@@ -33,6 +34,7 @@ function App() {
         <Route path='/contacto' element={<Contact/>}/>
         <Route path='/busqueda/:name' element={<SearchByName/>}/>
         <Route path='/categoria/:genre' element={<SearchByCategory/>}/>
+        <Route path='/released/:date' element={<SearchByReleased/>}/>
       </Routes>
     </div>
   );
