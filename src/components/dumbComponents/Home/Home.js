@@ -8,7 +8,7 @@ export default function Home() {
     let state = useSelector(s => s.root.allBooks)
     let data = state.slice(0, 10)
     return (
-        <div className='w-screen h-screen bg-greyBlack-100'>
+        <div className='w-full h-full bg-greyBlack-100'>
             <Publicity/>
             <div>
                 <SwiperCard data={data}/>

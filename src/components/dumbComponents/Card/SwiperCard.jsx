@@ -17,7 +17,7 @@ export default function SwiperCard({data}){
         >
         <div className="flex justify-evenly">
             { data && data.length > 0 && data.map((e)=> (
-                <SwiperSlide className = "flex justify-center">
+                <SwiperSlide className = "flex justify-center w-full h-full bg-greyBlack-100">
                     <Cards data={e} key={e.id}/>
                 </SwiperSlide>))}
         </div>
