@@ -20,7 +20,7 @@ export default function Filter({ text, filtros }) {
         <summary className="p-1 text-sm font-semibold select-none text-greyBlack-400">
           {text}
         </summary>
-        <div className="grid grid-cols-2 gap-1 p-2 text-sm leading-6 border-t-2 text-greyBlack-400 border-greyBlack-100">
+        <div className="grid grid-cols-3 gap-1 p-2 text-sm leading-6 border-t-2 text-greyBlack-400 border-greyBlack-100">
           {
             filtros && filtros.map((e) => <button key={e.id} id={e.genre || e.released} onClick={() => handleOnClick(e.genre || e.released)}>{e.genre || e.released}</button>)
           }
