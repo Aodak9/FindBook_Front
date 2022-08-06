@@ -3,10 +3,11 @@ import axios from "axios";
 
 export let getAllBooks = ()=> async(dispatch)=>{
     try {
-        let allBooks = (await axios.get('https://findbook-api.herokuapp.com/books')).data;
+        let result = (await axios.get('https://findbook-api.herokuapp.com/books?size=1')).data;
+        let getAllBooks = (await axios.get(`https://findbook-api.herokuapp.com/books?size=${result.totalBooks}`)).data;
         dispatch({
             type: GET_ALL_BOOKS,
-            payload: allBooks.content
+            payload: getAllBooks.content
         })
     } catch (error) {
         alert(error)
@@ -63,7 +64,8 @@ export let getGenres = (genre)=> async(dispatch)=>{
 
 export let getYears = () => async(dispatch)=>{
     try {
-        let getyears = (await axios.get('https://findbook-api.herokuapp.com/books')).data;
+        //let result = (await axios.get('https://findbook-api.herokuapp.com/books?size=1')).data;
+        let getyears = (await axios.get(`https://findbook-api.herokuapp.com/books?size=20`)).data;
         dispatch({
             type: GET_YEARS,
             payload: getyears.content

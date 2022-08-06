@@ -16,7 +16,7 @@ function App() {
 
   let dispatch = useDispatch()
 
-  useEffect(() => {
+  useEffect(() => async()=> {
     dispatch(getAllBooks())
     dispatch(getGenres())
     dispatch(getYears())
