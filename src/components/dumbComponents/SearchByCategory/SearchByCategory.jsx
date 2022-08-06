@@ -5,7 +5,7 @@ import Swiper from '../Card/SwiperCard'
 
 export default function SearchByCategory() {
     let state = useSelector(s=> s.root.allBooksByGenre)
-    let data = state.libros
+    let data = state[0]?.libros
     return (
     <div>
         <Swiper data={data}/>

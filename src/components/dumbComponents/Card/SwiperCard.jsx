@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import Card from "./Cards";
+import Cards from "./Cards";
 
 
 export default function SwiperCard({data}){
@@ -18,7 +18,7 @@ export default function SwiperCard({data}){
         <div className="flex justify-evenly">
             { data && data.length > 0 && data.map((e)=> (
                 <SwiperSlide className = "flex justify-center">
-                    <Card data={e} key={e.id}/>
+                    <Cards data={e} key={e.id}/>
                 </SwiperSlide>))}
         </div>
         </Swiper> 
