@@ -9,24 +9,24 @@ export default function Detail() {
         <>
         {  
             state.id && 
-                <div className='w-screen bg-greyBlack-100 grid grid-cols-1 justify-items-center gap-5'>
-                <div className='grid grid-cols-1 justify-items-center w-full px-20 bg-greyBlack-200 pt-2'>
+                <div className='grid w-screen grid-cols-1 gap-5 bg-greyBlack-100 justify-items-center'>
+                <div className='grid w-full grid-cols-1 px-20 pt-2 justify-items-center bg-greyBlack-200'>
                     <h1>{state.name}</h1>
-                    <div className='grid grid-cols-3 justify-items-center content-center justify-between w-full h-12'>
+                    <div className='grid content-center justify-between w-full h-12 grid-cols-3 justify-items-center'>
                         <span><a href='#descripcion'>Descripcion</a></span>
                         <span><a href='#caracteristicas'>Caracteristicas</a></span>
                         <span><a href='#recomendados'>Recomendados</a></span>
                     </div>
                 </div>
-                <div className='bg-cream-100 w-2/3 grid justify-items-center gap-5 rounded-sm'>
-                    <div className='grid grid-cols-2 w-2/3 gap-40 mt-8 w pb-7 border-b-2 border-greyBlack-100'>
+                <div className='grid w-2/3 gap-5 rounded-sm bg-cream-100 justify-items-center'>
+                    <div className='grid w-2/3 grid-cols-2 gap-40 mt-8 border-b-2 w pb-7 border-greyBlack-100'>
                         <div className='grid justify-items-center'>
                                 <img src={state.image} alt='Not found'
                                 className='w-48 rounded-md'
                                 />
                             <ButtonDetail>Agregar a una lista</ButtonDetail>
                         </div>
-                        <div className='grid grid-rows-3 content-center h-40 rounded-md bg-cream-200 justify-items-center'>
+                        <div className='grid content-center h-40 grid-rows-3 rounded-md bg-cream-200 justify-items-center'>
                             <h1 className='m-auto'>US${state.price}</h1>                      
                             <ButtonDetail>Comprar ahora</ButtonDetail>
                             <ButtonDetail style={{background: '#bababa'}}>Agregar al carrito</ButtonDetail>
@@ -80,8 +80,8 @@ export default function Detail() {
                     </DivDetail>
                     <DivDetail id='recomendados' style={{border: 'none'}}>
                         <H1Detail>Recomendaciones</H1Detail>
-                        <div className='w-full h-80'>
-                            <SwiperCard data={books}/>
+                        <div>
+                            <SwiperCard className='w-full h-72' data={books}/>
                         </div>
                     </DivDetail>
                 </div>
