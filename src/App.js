@@ -1,5 +1,4 @@
 import NavBar from './components/dumbComponents/NavBar/NavBar';
-import Footer from './components/dumbComponents/Footer/Footer';
 import {Routes, Route} from 'react-router-dom'
 import Detail from './components/dumbComponents/Detail/Detail';
 import Shop from './components/dumbComponents/Shop/Shop';
@@ -10,7 +9,7 @@ import Home from './components/dumbComponents/Home/Home';
 import CreatePost from './components/smartComponents/CreatePost/CreatePost';
 import {useEffect} from 'react'
 import { useDispatch } from 'react-redux';
-import {getAllBooks, getGenres} from  './redux/actions/actions'
+import {getAllBooks, getGenres, getYears} from  './redux/actions/actions'
 import SearchByCategory from './components/dumbComponents/SearchByCategory/SearchByCategory';
 function App() {
 
@@ -19,6 +18,7 @@ function App() {
   useEffect(() => {
     dispatch(getAllBooks())
     dispatch(getGenres())
+    dispatch(getYears())
   }, [dispatch])
 
   return (
@@ -34,7 +34,6 @@ function App() {
         <Route path='/busqueda/:name' element={<SearchByName/>}/>
         <Route path='/categoria/:genre' element={<SearchByCategory/>}/>
       </Routes>
-      {/* <Footer/> */}
     </div>
   );
 }

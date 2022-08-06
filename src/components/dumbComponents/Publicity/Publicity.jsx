@@ -10,19 +10,19 @@ import publi2 from '../../../assets/Harry.png'
 
 let pictures = [publi1, publi2];
 
-function slidecreator () {
+function slidecreator() {
     return (
-        pictures.map(e => {
+        pictures.map((e, i) => {
             return (
-                <SwiperSlide className = "flex justify-center">
-                    <img 
-                        className = "h-96 w-screen mb-4"
-                        alt = "Not Found"
+                <SwiperSlide className="flex justify-center" key={i}>
+                    <img
+                        className="h-96 w-screen mb-4"
+                        alt="Not Found"
                         /*src = {`https://picsum.photos/id/${pic}/800/600`}*/
-                        src = {e}
+                        src={e}
                     ></img>
                 </SwiperSlide>
-            )   
+            )
         })
     )
 }
@@ -30,14 +30,14 @@ function slidecreator () {
 export default function Publicity() {
     return (
         <Swiper
-            modules = { [ Navigation, Pagination, Autoplay ] }
-            slidesPerView = { 1 }
+            modules={[Navigation, Pagination, Autoplay]}
+            slidesPerView={1}
             //navigation
             // autoplay={{ delay: 10000 }}
-            autoplay = { true }
-            pagination = { { clickable: true } }
+            autoplay={true}
+            pagination={{ clickable: true }}
         >
-            { slidecreator() }
+            {slidecreator()}
         </Swiper>
     )
 }
