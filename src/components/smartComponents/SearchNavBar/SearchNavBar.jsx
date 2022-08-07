@@ -24,10 +24,10 @@ export default function SearchNavBar() {
     setName(e.target.value)
   }
   return (
-    <div className='rounded-full bg-cream-300 flex'>
+    <div className='flex rounded-full bg-cream-300'>
       <input type="text" value={name} onChange={(e) => handleOnchange(e)} className='rounded-full' />
       <button onClick={handleOnClick}>
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mx-3 rounded-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 rounded-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       </button>

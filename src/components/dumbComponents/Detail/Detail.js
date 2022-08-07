@@ -89,8 +89,8 @@ export default function Detail() {
                     </DivDetail>
                     <DivDetail id='recomendados' style={{border: 'none'}}>
                         <H1Detail>Recomendaciones</H1Detail>
-                        <div>
-                            <SwiperCard className='w-full h-72' data={books}/>
+                        <div className='w-full fix'>
+                            <SwiperCard data={books}/>
                         </div>
                     </DivDetail>
                 </div>
