@@ -1,6 +1,8 @@
 import { GET_ALL_BOOKS, GET_BOOK_BY_ID, GET_BOOKS_BY_NAME, GET_BOOK_BY_GENRE, GET_GENRE, GET_YEARS, GET_BOOKS_BY_YEARS} from "./variables";
 import axios from "axios";
 
+
+
 export let getAllBooks = ()=> async(dispatch)=>{
     try {
         let result = (await axios.get('https://findbook-api.herokuapp.com/books?size=1')).data;
@@ -65,7 +67,7 @@ export let getGenres = (genre)=> async(dispatch)=>{
 export let getYears = () => async(dispatch)=>{
     try {
         //let result = (await axios.get('https://findbook-api.herokuapp.com/books?size=1')).data;
-        let getyears = (await axios.get(`https://findbook-api.herokuapp.com/books?size=20`)).data;
+        let getyears = (await axios.get(`https://findbook-api.herokuapp.com/books?size=57`)).data;
         dispatch({
             type: GET_YEARS,
             payload: getyears.content
@@ -75,9 +77,18 @@ export let getYears = () => async(dispatch)=>{
     }
 }
 
-export let getBooksByYears = (data) =>{
-        return{
-            type: GET_BOOKS_BY_YEARS,
-            payload: data
+export let getBooksByYears = (yearsToFilter) => async (dispatch) =>{
+    let getAllBooks = (await axios.get(`https://findbook-api.herokuapp.com/books?size=57`)).data;
+    let filterBooks = [];
+    let yearsToNumber = yearsToFilter.split('-').map(y => Number(y));
+    for (let i = 0; i < getAllBooks.content.length; i++) {
+        if (Number(getAllBooks.content[i].released.slice(0, 4)) >= yearsToNumber[0] && Number(getAllBooks.content[i].released.slice(0, 4)) < yearsToNumber[1]) {
+            filterBooks.push(getAllBooks.content[i]);
         }
+    }
+    
+    return dispatch({
+        type: GET_BOOKS_BY_YEARS,
+        payload: {filterBooks, yearsToFilter}
+    })
 }
