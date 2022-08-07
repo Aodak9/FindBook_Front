@@ -10,9 +10,9 @@ export default function SearchNavBar() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(getBookByName(nameSearch))
-  }, [dispatch, nameSearch])
+  // useEffect(() => {
+  //   dispatch(getBookByName(nameSearch))
+  // }, [dispatch, nameSearch])
 
   function handleOnClick() {
     dispatch(getBookByName(name))

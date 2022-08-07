@@ -3,7 +3,8 @@ import {Routes, Route} from 'react-router-dom'
 import Detail from './components/dumbComponents/Detail/Detail';
 import Shop from './components/dumbComponents/Shop/Shop';
 import Loggin from './components/smartComponents/Loggin/Loggin';
-import Contact from './components/smartComponents/Contact/Contact'
+import Contact from './components/smartComponents/Contact/Contact';
+import ThanksPage from './components/dumbComponents/ThanksPage/ThanksPage';
 import SearchByName from './components/dumbComponents/SearchByName/SearchByName';
 import Home from './components/dumbComponents/Home/Home';
 import CreatePost from './components/smartComponents/CreatePost/CreatePost';
@@ -32,6 +33,7 @@ function App() {
         <Route path='/postbook' element={<CreatePost/>}/>
         <Route path='/loggin' element={<Loggin/>}/>
         <Route path='/contacto' element={<Contact/>}/>
+        <Route path='/contacto/agradecimiento' element={<ThanksPage/>}/>
         <Route path='/busqueda/:name' element={<SearchByName/>}/>
         <Route path='/categoria/:genre' element={<SearchByCategory/>}/>
         <Route path='/released/:date' element={<SearchByReleased/>}/>

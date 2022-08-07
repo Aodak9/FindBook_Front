@@ -7,10 +7,10 @@ export default function Filter({ text, filtros }) {
   let dispatch = useDispatch()
   let handleOnClick = (type) => {
     if(filtros?.some(e => e.genre === type)){
-        dispatch(getBooksGenres(type))
+        // dispatch(getBooksGenres(type))
         navigate(`/categoria/${type}`)
       }else{
-        dispatch(getBooksByYears(type))
+        // dispatch(getBooksByYears(type))
         navigate(`/released/${type}`)
       } 
   }
@@ -22,7 +22,7 @@ export default function Filter({ text, filtros }) {
         </summary>
         <div className="grid grid-cols-3 gap-1 p-2 text-sm leading-6 border-t-2 text-greyBlack-400 border-greyBlack-100">
           {
-            filtros && filtros.map((e) => <button key={e.id} id={e.genre || e.released} onClick={() => handleOnClick(e.genre || e.released)}>{e.genre || e.released}</button>)
+            filtros && filtros.map((e) => <button key={e.id} id={e.genre || e} onClick={() => handleOnClick(e.genre || e)}>{e.genre || e}</button>)
           }
         </div>
       </details>

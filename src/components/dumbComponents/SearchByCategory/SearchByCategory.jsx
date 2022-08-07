@@ -1,12 +1,19 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 // import Swiper from '../Card/SwiperCard'
 import ImgCategory from '../../../assets/categoria.jpg'
 import ContainCards from '../Card/ContainCards'
+import { getBooksGenres } from '../../../redux/actions/actions'
 
 export default function SearchByCategory() {
     let state = useSelector(s => s.root.allBooksByGenre)
     let data = state[0]?.libros
+    const dispatch = useDispatch()
+    console.log(window.location.pathname.split('/')[2])
+    useEffect(() => {
+        dispatch(getBooksGenres(window.location.pathname.split('/')[2]))
+    },[dispatch, state])
+
     return (
         <div className='w-full h-full bg-greyBlack-100'>
             <div className='relative'>

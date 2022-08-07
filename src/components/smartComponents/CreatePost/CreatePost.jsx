@@ -12,15 +12,13 @@ import { useState } from "react";
 
 // lógica validación
 function validator(form) {
-    //const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
     // const re = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
-    const re = /^https?:\/\/[\w]+(\.[\w]+)+[/#?]?.*$/;
+    const re = /^https?:\/\/[\w-]+(\.[\w-]+)+[/#?]?.*$/;
     let forbidden = {};
     let imageValidator = re.test(form.image)
     Object.keys(form).forEach(property => {
         if (!form[property]) {
             forbidden.title = `Todos los campos son obligatorios`;
-            return forbidden;
         }
     })
     if (form.genre.length === 0) forbidden.genre = '';
@@ -31,7 +29,7 @@ function validator(form) {
     if (form.description.length > 2000) forbidden.description = 'La descripción es muy larga';
     if (form.image.length > 0 && !imageValidator) forbidden.image = 'Enlace URL imagen inválido';
     if (form.rating.length === 0) forbidden.rating = '';
-    if (isNaN(form.price)) forbidden.pages = 'Número de páginas debe ser un número';
+    if (isNaN(form.price)) forbidden.pages = 'Precio debe ser un número';
     else if (Number(form.price) < 0) forbidden.price = 'Precio debe ser un número positivo';
     if (!form.released) forbidden.released = '';
     if (form.language.length === 0) forbidden.language = '';
@@ -116,6 +114,10 @@ export default function CreatePost() {
         }))
     };
     function handleFormSubmit (e) {
+        if (form.name === '') {
+            alert('No ha ingresado ninguna información para publicar');
+            return;
+        }
         e.preventDefault();
         form.category = form.category[0];
         form.pages = Number(form.pages);
@@ -151,17 +153,17 @@ export default function CreatePost() {
         const possibleRatings = [1, 2, 3, 4, 5];
         return (
             <div>
-                <select className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectRating(e)}> {/*RatingSelector*/}
+                <select value = {form.rating} name = 'rating' className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectRating(e)}> {/*RatingSelector*/}
                     <option /*disabled={true}*/ value="disabled">--Seleccionar--</option>
                     {
-                        possibleRatings.map(r  => ( <option value = {r}>{r}</option> ))
+                        possibleRatings.map(r  => ( <option key = {r} value = {r}>{r}</option> ))
                     }
-                    <input type = 'text' value = {form.rating} name = 'rating'/>
+                    {/* <input type = 'text' value = {form.rating} name = 'rating'/> */}
                 </select>
                 <div>
                     {
                         form.rating.map(r => 
-                            <div>
+                            <div className = 'text-slate-400' key = {r}>
                                 <p>Puntaje asignado: &nbsp;{r}</p>
                             </div>
                         )
@@ -175,17 +177,17 @@ export default function CreatePost() {
         const possibleCategories = ['todos', '12+', '16+', '18+', 'sin clasificación'];
         return (
             <div>
-                <select className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectCategory(e)}> {/*CategorySelector*/}
+                <select value = {form.category} name = 'category' className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectCategory(e)}> {/*CategorySelector*/}
                     <option /*disabled={true}*/ value="disabled">--Seleccionar--</option>
                     {
-                        possibleCategories.map(cat  => ( <option value = {cat}>{cat}</option> ))
+                        possibleCategories.map((cat, i)  => ( <option key = {i} value = {cat}>{cat}</option> ))
                     }
-                    <input type = 'text' value = {form.category} name = 'category'/>
+                    {/* <input type = 'text' value = {form.category} name = 'category'/> */}
                 </select>
                 <div>
                     {
-                        form.category.map(cat => 
-                            <div>
+                        form.category.map((cat, i) => 
+                            <div className = "text-slate-400" key = {i}>
                                 <p>Categoría asignada: &nbsp;{cat}</p>
                             </div>
                         )
@@ -199,17 +201,17 @@ export default function CreatePost() {
         const possibleLanguages = ['español', 'inglés', 'otro'];
         return (
             <div>
-                <select className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectLanguage(e)}> {/*LanguageSelector*/}
+                <select value = {form.language} name = 'language' className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectLanguage(e)}> {/*LanguageSelector*/}
                     <option /*disabled={true}*/ value="disabled">--Seleccionar--</option>
                     {
-                        possibleLanguages.map(lang  => ( <option value = {lang}>{lang}</option> ))
+                        possibleLanguages.map((lang, i)  => ( <option key = {i} value = {lang}>{lang}</option> ))
                     }
-                    <input type = 'text' value = {form.language} name = 'language'/>
+                    {/* <input type = 'text' value = {form.language} name = 'language'/> */}
                 </select>
                 <div className = "flex justify-center">
                     {
-                        form.language.map(lang => 
-                            <div className = "flex items-center no-underline text-slate-50">
+                        form.language.map((lang, i) => 
+                            <div key = {i} className = "flex items-center no-underline text-slate-400">
                                 <p>Lenguaje seleccionado: &nbsp;{lang}</p>
                             </div>
                         )
@@ -228,18 +230,18 @@ export default function CreatePost() {
         ];
         return (
             <div>
-                <select className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectGenre(e)}> {/*GenreSelector*/}
+                <select value = {form.genre} name = 'genre' className = "text-slate-600 w-56 rounded-lg text-center" onChange = {(e) => handleSelectGenre(e)}> {/*GenreSelector*/}
                     <option /*disabled={true}*/ value="disabled">--Seleccionar--</option>
                     {
-                        possibleGenres.map(gen  => ( <option value = {gen}>{gen}</option> ))
+                        possibleGenres.map((gen, i)  => ( <option key = {i} value = {gen}>{gen}</option> ))
                     }
-                    <input type = 'text' value = {form.genre} name = 'genre'/>
+                    {/* <input type = 'text' value = {form.genre} name = 'genre'/> */}
                 </select>
-                <div className = "flex justify-center">
+                <div className = "flex flex-col items-center">
                     {
-                        form.genre.map(gen => 
-                            <div className = "flex items-center no-underline text-slate-50">
-                                <p>Género añadido: &nbsp;{gen}</p>{<button onClick = {() => handleDeleteGenre(gen)}>Borrar</button>}
+                        form.genre.map((gen, i) => 
+                            <div key = {i} className = "flex items-center no-underline text-slate-400 py-1">
+                                <p>Añadido: &nbsp;{gen}&nbsp;</p>{<button className = 'border rounded-lg px-1 bg-stone-100' onClick = {() => handleDeleteGenre(gen)}>&nbsp;Borrar</button>}
                             </div>
                         )
                     }
@@ -247,10 +249,10 @@ export default function CreatePost() {
             </div>
         )
     }
-        console.log('forbidden ', forbidden);
+
     // Renderizar formulario
     return (
-        <div className = "flex justify-center items-center text-center h-screen flex-col"> {/*Container*/}
+        <div className = "flex justify-center items-center text-center h-screen flex-col mt-12"> {/*Container*/}
             <div className = "bg-cream-100 px-20 w-2/3 rounded"> {/*Background bg-slate-900*/}
                 <h1 className = "text-zinc-600 pt-5 text-lg">PUBLICA TU LIBRO PARA VENTA</h1>
                 <br></br>
@@ -341,12 +343,15 @@ export default function CreatePost() {
                     </div>
                     <div> {/*ErrorDiv*/}
                         {
+                            forbidden.title && ( <p key = 'title' className = "flex text-orange-600">{forbidden.title}</p> )
+                        }
+                        {/* {
                             Object.keys(forbidden).map((oneKey, i) => {
                                 return (
                                     forbidden[oneKey] && ( <p key = {i} className = "flex text-orange-600">{forbidden[oneKey]}</p> )
                                 )
                             })
-                        }
+                        } */}
                     </div>
                     <br></br>
                     <br></br>

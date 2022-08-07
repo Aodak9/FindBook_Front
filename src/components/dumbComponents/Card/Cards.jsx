@@ -8,7 +8,7 @@ export default function Cards({ data }) {
     let dispatch = useDispatch()
     function handleOnClick() {
         dispatch(getBookByName(data.name))
-        dispatch(getBookByID(data.id))
+        // dispatch(getBookByID(data.id))
         navigate(`/detail/${data.id}`)
     }
 

@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {ButtonDetail, H1Detail, DivDetail, TextDetail, DivTableDetail, DivTableColDetail} from './stayleComponentDetail'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import SwiperCard from '../Card/SwiperCard';
+import { getBookByID } from '../../../redux/actions/actions';
+import { useParams } from 'react-router-dom';
+
 export default function Detail() {
+    let id = useParams().id
+    const dispatch = useDispatch()
     let state = useSelector(s => s.root.bookById)
     let books = useSelector(s=> s.root.allBooksByName).slice(0, 10)
+    useEffect(() => {
+        dispatch(getBookByID(id))
+    }, [])
+
     return (
         <>
         {  
@@ -63,7 +72,7 @@ export default function Detail() {
                             <DivTableDetail/>
                             <DivTableColDetail>
                                 <h1>Genre</h1>
-                                <h2>{state.genre}</h2>
+                                <h2>{state.generos.map(g => g.genre).join(' - ')}</h2>
                             </DivTableColDetail>
                             <DivTableDetail/>
                             <DivTableColDetail>

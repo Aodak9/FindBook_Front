@@ -4,7 +4,7 @@ let initialState = {
     allBooks: [],
     allBooksByName: [],
     allBooksByGenre: [],
-    allBooksByRealiced: [],
+    allBooksByRealiced: {},
     bookById: {},
     year: [],
     name: ''
@@ -33,22 +33,42 @@ export default function root(state = initialState, actions){
                 ...state,
                 allBooksByGenre: actions.payload
             }
+        // case GET_YEARS:
+        //     let years = actions.payload.map((l, i) => {
+        //         return {
+        //             id: i,
+        //             released: l.released
+        //         }
+        //     })
+        //     return {
+        //         ...state,
+        //         year: years
+        //     }
         case GET_YEARS:
-            let years = actions.payload.map((l, i) => {
-                return {
-                    id: i,
-                    released: l.released
-                }
+            let yearsToFilter = [];
+            let releasedArray = actions.payload.map(l => Number(l.released.split('-')[0]));
+            let sortedReleasedArray = releasedArray.sort(function(a, b) {
+                return a - b;
             })
+            const topYear = sortedReleasedArray[sortedReleasedArray.length - 1];
+            const bottomYear = sortedReleasedArray[0];
+
+            for (let i = 1; i < Math.ceil((topYear - bottomYear)/5); i++) {
+                yearsToFilter.push(`${bottomYear - 5 + (i * 5)}-${bottomYear + (i * 5)}`);
+            }
+            yearsToFilter.push(`${bottomYear - 5 + (5*(Math.ceil((topYear - bottomYear)/5)))}-${topYear}`);
             return {
                 ...state,
-                year: years
+                year: yearsToFilter
+                // year: actions.payload
             }
         case GET_BOOKS_BY_YEARS:
-            let booksByName = state.allBooks.filter(e => e.released === actions.payload)
+            // let booksByName = state.allBooks.filter(e => e.released === actions.payload)
+            console.log('payload de la muerte', actions.payload)
             return {
                 ...state,
-                allBooksByRealiced: booksByName
+                // allBooksByRealiced: booksByName
+                allBooksByRealiced: actions.payload
             }
         default:
             return {...state}
