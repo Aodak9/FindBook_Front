@@ -72,7 +72,7 @@ export default function Detail() {
                             <DivTableDetail/>
                             <DivTableColDetail>
                                 <h1>Genre</h1>
-                                <h2>{state.genre}</h2>
+                                <h2>{state.generos.map(g => g.genre).join(' - ')}</h2>
                             </DivTableColDetail>
                             <DivTableDetail/>
                             <DivTableColDetail>
