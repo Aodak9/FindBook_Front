@@ -7,7 +7,7 @@ export default function Filter({ text, filtros }) {
   let dispatch = useDispatch()
   let handleOnClick = (type) => {
     if(filtros?.some(e => e.genre === type)){
-        dispatch(getBooksGenres(type))
+        // dispatch(getBooksGenres(type))
         navigate(`/categoria/${type}`)
       }else{
         // dispatch(getBooksByYears(type))
