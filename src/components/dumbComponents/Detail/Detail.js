@@ -1,30 +1,24 @@
-import React , {useEffect}from 'react'
-import {ButtonDetail, H1Detail, DivDetail, TextDetail, DivTableDetail, DivTableColDetail, H1DetailSwiper} from './stayleComponentDetail'
-import { useDispatch, useSelector } from 'react-redux';
-
-import CardImag from '../Card/CardImag';
+import React, { useEffect } from 'react'
+import {ButtonDetail, H1Detail, DivDetail, TextDetail, DivTableDetail, DivTableColDetail} from './stayleComponentDetail'
+import { useSelector, useDispatch } from 'react-redux';
+import SwiperCard from '../Card/SwiperCard';
+import { getBookByID } from '../../../redux/actions/actions';
 import { useParams } from 'react-router-dom';
-import { getBookByID, getBooksGenres } from '../../../redux/actions/actions';
 
 export default function Detail() {
+    let id = useParams().id
+    const dispatch = useDispatch()
     let state = useSelector(s => s.root.bookById)
-    let dispatch = useDispatch()
-    let {id} = useParams()
+    let books = useSelector(s=> s.root.allBooksByName).slice(0, 10)
     useEffect(() => {
-        dispatch(getBookByID(parseInt(id)))
+        dispatch(getBookByID(id))
     }, [])
 
-    useEffect(() => {
-        if(state?.hasOwnProperty('generos')){
-            dispatch(getBooksGenres(state?.generos[0]?.genre))
-        }
-    }, [state])
-    
-    if(state?.hasOwnProperty('generos')){ return (
+    return (
         <>
         {  
             state.id && 
-                <div className='grid w-full grid-cols-1 gap-5 bg-greyBlack-100 justify-items-center'>
+                <div className='grid w-screen grid-cols-1 gap-5 bg-greyBlack-100 justify-items-center'>
                 <div className='grid w-full grid-cols-1 px-20 pt-2 justify-items-center bg-greyBlack-200'>
                     <h1>{state.name}</h1>
                     <div className='grid content-center justify-between w-full h-12 grid-cols-3 justify-items-center'>
@@ -93,19 +87,15 @@ export default function Detail() {
                             <DivTableDetail/>
                         </div>
                     </DivDetail>
-                    <DivDetail id='recomendados' style={{border: 'none', position: 'relative'}}>
-                        <H1DetailSwiper>Recomendaciones</H1DetailSwiper>
-                        <div className='absolute max-w-3xl top-14'>
-                            <CardImag/> 
+                    <DivDetail id='recomendados' style={{border: 'none'}}>
+                        <H1Detail>Recomendaciones</H1Detail>
+                        <div className='w-full fix'>
+                            <SwiperCard data={books}/>
                         </div>
                     </DivDetail>
                 </div>
                 </div>
             }
         </>
-    )}else{
-        return (
-            <h1>Jodidos</h1>
-        )
-    }
+    )
 }

@@ -9,9 +9,11 @@ export default function SearchByCategory() {
     let state = useSelector(s => s.root.allBooksByGenre)
     let data = state[0]?.libros
     const dispatch = useDispatch()
+    console.log(window.location.pathname.split('/')[2])
     useEffect(() => {
         dispatch(getBooksGenres(window.location.pathname.split('/')[2]))
-    },[dispatch, data])
+    },[dispatch, state])
+
     return (
         <div className='w-full h-full bg-greyBlack-100'>
             <div className='relative'>
@@ -24,7 +26,7 @@ export default function SearchByCategory() {
                 </div>
                 <div className='w-full col-span-3'>
                     <div className='w-full h-auto'>
-                        <ContainCards data={data}/>
+                        <ContainCards data={data} />
                     </div>
                 </div>
             </div>
