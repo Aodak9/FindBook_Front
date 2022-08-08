@@ -14,10 +14,10 @@ export default function Contacto() {
                     <textarea name = 'comments' placeholder = 'Mensaje...' className = 'resize-none px-6 py-2 rounded'></textarea> {/*form_input form_input-message*/}
                     <input type = 'submit' value = 'Enviar' className = 'font-sans bg-sky-500 text-slate-50 border-none font-normal px-2 py-3 rounded cursor-pointer hover:text-white hover:border-solid hover:border-slate-50 hover:bg-stone-400'></input> {/*form_cta*/}
                 </div>
-                <input type = 'hidden' name = '_next' value = 'http://localhost:3000/contacto/agradecimiento'></input>
+                <input type = 'hidden' name = '_next' value = '/contacto/agradecimiento'></input>
                 <input type = 'hidden' name = '_captcha' value = 'false'></input>
                 <input type = 'hidden' name = '_subject' value = 'New submission!'></input>
-                {/* <input type = 'hidden' name = '_cc' value = 'nunyypin@gmail.com,nelnico008@gmail.com,rmauriciocastilla@gmail.com'></input> */}
+                <input type = 'hidden' name = '_cc' value = 'nunyypin@gmail.com,nelnico008@gmail.com,rmauriciocastilla@gmail.com,emiliojose-2000@hotmail.com'></input>
             </form>
     )
 }
