@@ -5,8 +5,8 @@ import axios from "axios";
 
 export let getAllBooks = ()=> async(dispatch)=>{
     try {
-        let result = (await axios.get('/books?size=1')).data;
-        let getAllBooks = (await axios.get(`/books?size=${result.totalBooks}`)).data;
+        let result = (await axios.get('https://findbook-api.herokuapp.com/books?size=1')).data;
+        let getAllBooks = (await axios.get(`https://findbook-api.herokuapp.com/books?size=${result.totalBooks}`)).data;
         dispatch({
             type: GET_ALL_BOOKS,
             payload: getAllBooks.content
@@ -18,7 +18,7 @@ export let getAllBooks = ()=> async(dispatch)=>{
 
 export let getBookByID = (id)=> async(dispatch)=>{
     try {
-        let bookByID = (await axios.get(`/books/${id}`)).data;
+        let bookByID = (await axios.get(`https://findbook-api.herokuapp.com/books/${id}`)).data;
         dispatch({
             type: GET_BOOK_BY_ID,
             payload: bookByID
@@ -30,7 +30,7 @@ export let getBookByID = (id)=> async(dispatch)=>{
 
 export let getBookByName = (name)=> async(dispatch)=>{
     try {
-        let bookByName = (await axios.get(`/books?name=${name}`)).data;
+        let bookByName = (await axios.get(`https://findbook-api.herokuapp.com/books?name=${name}`)).data;
         dispatch({
             type: GET_BOOKS_BY_NAME,
             payload: {Books: bookByName.content, name} 
@@ -42,7 +42,7 @@ export let getBookByName = (name)=> async(dispatch)=>{
 
 export let getBooksGenres = (genre)=> async(dispatch)=>{
     try {
-        let getGenresDB = (await axios.get(`/genres?genre=${genre}`)).data;
+        let getGenresDB = (await axios.get(`https://findbook-api.herokuapp.com/genres?genre=${genre}`)).data;
         dispatch({
             type: GET_BOOK_BY_GENRE,
             payload: getGenresDB.content
@@ -54,7 +54,7 @@ export let getBooksGenres = (genre)=> async(dispatch)=>{
 
 export let getGenres = ()=> async(dispatch)=>{
     try {
-        let getGenresDB = (await axios.get('/genres')).data;
+        let getGenresDB = (await axios.get('https://findbook-api.herokuapp.com/genres')).data;
         dispatch({
             type: GET_GENRE,
             payload: getGenresDB
@@ -66,7 +66,7 @@ export let getGenres = ()=> async(dispatch)=>{
 
 export let getYears = () => async(dispatch)=>{
     try {
-        let getyears = (await axios.get(`/books?size=57`)).data;
+        let getyears = (await axios.get(`https://findbook-api.herokuapp.com/books?size=57`)).data;
         dispatch({
             type: GET_YEARS,
             payload: getyears.content
@@ -77,7 +77,7 @@ export let getYears = () => async(dispatch)=>{
 }
 
 export let getBooksByYears = (yearsToFilter) => async (dispatch) =>{
-    let getAllBooks = (await axios.get(`/books?size=57`)).data;
+    let getAllBooks = (await axios.get(`https://findbook-api.herokuapp.com/books?size=57`)).data;
     let filterBooks = [];
     let yearsToNumber = yearsToFilter.split('-').map(y => Number(y));
     for (let i = 0; i < getAllBooks.content.length; i++) {
