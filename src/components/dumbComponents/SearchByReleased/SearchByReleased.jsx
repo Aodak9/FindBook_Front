@@ -8,11 +8,14 @@ export default function SearchByReleased() {
     let state = useSelector(s => s.root.allBooksByRealiced) 
     useEffect(() => {
         dispatch(getBooksByYears(window.location.pathname.split('/')[2]))
-    },[state, dispatch])
+    })
+    // dispatch(getBooksByYears(type))
+    console.log('match', window.location.pathname.split('/')[2])
     if(state.hasOwnProperty('filterBooks')) {
   return (
         <div className='w-full h-full bg-greyBlack-100'>
             <div className='relative h-full'>
+                {/* <span className='absolute grid w-full text-5xl place-content-center top-10'>{state[0].released}</span> */}
                 <span className='absolute grid w-full text-5xl place-content-center top-10'>{state.yearsToFilter}</span>
                 <img className='w-full h-36' src={ImgReleased} alt='Not found' />
             </div>

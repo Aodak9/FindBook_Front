@@ -33,6 +33,17 @@ export default function root(state = initialState, actions){
                 ...state,
                 allBooksByGenre: actions.payload
             }
+        // case GET_YEARS:
+        //     let years = actions.payload.map((l, i) => {
+        //         return {
+        //             id: i,
+        //             released: l.released
+        //         }
+        //     })
+        //     return {
+        //         ...state,
+        //         year: years
+        //     }
         case GET_YEARS:
             let yearsToFilter = [];
             let releasedArray = actions.payload.map(l => Number(l.released.split('-')[0]));
@@ -49,10 +60,14 @@ export default function root(state = initialState, actions){
             return {
                 ...state,
                 year: yearsToFilter
+                // year: actions.payload
             }
         case GET_BOOKS_BY_YEARS:
+            // let booksByName = state.allBooks.filter(e => e.released === actions.payload)
+            console.log('payload de la muerte', actions.payload)
             return {
                 ...state,
+                // allBooksByRealiced: booksByName
                 allBooksByRealiced: actions.payload
             }
         default:

@@ -14,7 +14,9 @@ import {getAllBooks, getGenres, getYears} from  './redux/actions/actions'
 import SearchByCategory from './components/dumbComponents/SearchByCategory/SearchByCategory';
 import SearchByReleased from './components/dumbComponents/SearchByReleased/SearchByReleased';
 function App() {
+
   let dispatch = useDispatch()
+
   useEffect(() => async()=> {
     dispatch(getAllBooks())
     dispatch(getGenres())
