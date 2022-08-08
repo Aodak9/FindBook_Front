@@ -14,6 +14,12 @@ export const H1Detail = styled.h1`
     color: ${themesC.grey_Dark};
     border-bottom: 2px solid ${themesC.grey_Dark};
 `
+export const H1DetailSwiper = styled.div`
+    font-weight: bold;
+    color: ${themesC.grey_Dark};
+    border-bottom: 2px solid ${themesC.grey_Dark};
+    margin-bottom: 18rem;
+`
 
 export const DivDetail = styled.div`
     display: grid;
@@ -23,8 +29,10 @@ export const DivDetail = styled.div`
     padding-bottom: 1.7rem;
 `
 
+
 export const TextDetail = styled.div`
     padding-top: 20px;
+    text-align: justify;
     column-count: 2; 
     column-gap: 20px; 
 `

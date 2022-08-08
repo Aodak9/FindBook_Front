@@ -7,7 +7,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import Cards from "./Cards";
 
-
 export default function SwiperCard({ data }) {
     return (
         <Swiper
